@@ -25,7 +25,7 @@ class GeometricForm{
     }
 
     set width(value){
-        if(typeof(value) !== "number" || valor <= 0){
+        if(typeof(value) !== "number" || value <= 0){
             throw new Error("ERROR: width needs to be a number and > 0");
         }
 
