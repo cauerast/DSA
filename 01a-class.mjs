@@ -5,7 +5,7 @@ class GeometricForm{
     #width;
     #type;
 
-    //get -> to get data
+    // get -> to get data
     // set -> to set data 
 
     get hight(){
