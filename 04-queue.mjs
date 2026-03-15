@@ -1,6 +1,5 @@
 import Queue from "./lib/Queue.mjs";
 
-
 let queue = new Queue();
 console.log(`is empty? ${queue.isEmpty}`);
 console.log(queue.print());
