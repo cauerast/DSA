@@ -64,4 +64,3 @@ console.log("\nnext passenger to be called ->", airportQueue.peek());
 // 8 -> 
 airportQueue.dequeue();
 console.log("\nairport queue rn ->\n", airportQueue.print());
-
