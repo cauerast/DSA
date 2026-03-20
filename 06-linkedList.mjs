@@ -40,4 +40,3 @@ let idx1 = list.peek(1);
 let idx4 = list.peek(4);
 
 console.log({idx0, idx1, idx4});
-
