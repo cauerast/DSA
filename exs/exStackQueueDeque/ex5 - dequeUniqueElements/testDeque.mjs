@@ -10,5 +10,9 @@ deque.insertFront(3);
 deque.insertBack(4);
 deque.insertFront(5);
 deque.insertBack(6);
+deque.insertBack(6);
+deque.insertBack(6);
+deque.insertBack(6);
+deque.insertBack(6);
 
 console.log(deque.print());

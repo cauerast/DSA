@@ -8,21 +8,19 @@ export default class Deque{
 
     insertFront(value){
         if(this.#data.includes(value)){
+            console.log("you can't insert a already include item in this deque")
             return;
         } else {
             return this.#data.unshift(value); // insert at index 0;
         }
     }
     insertBack(value){
-
-        for(let i = 0; i < this.#data.length; i ++){
-            if(value === this.#data[i]){
-                break;
-            } else {
-                return this.#data.push(value); // insert at last index;
-            }
+        if(this.#data.includes(value)){
+            console.log("you can't insert a already include item in this deque")
+            return;
+        } else {
+            return this.#data.push(value); // insert at last index;
         }
-        return 
     }
 
     removeFront(){
