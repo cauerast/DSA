@@ -11,7 +11,6 @@ export default class Deque{
             return;
         } else {
             return this.#data.unshift(value); // insert at index 0;
-
         }
     }
     insertBack(value){
