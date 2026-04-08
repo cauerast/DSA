@@ -11,11 +11,13 @@ export default class Linkedlist{
     #head; // start
     #tail; // end
     #count; // counter to count nodes
+    #removedHistory;
 
     constructor(){
         this.#head = null;
         this.#tail = null;
         this.#count = 0;
+        this.#removedHistory = [];
     }
 
     get isEmpty(){
@@ -109,7 +111,7 @@ export default class Linkedlist{
         }
 
         this.#count--;
-
+        this.#removedHistory.push(removed.data)
         return removed.data;
     }
 
@@ -169,7 +171,7 @@ export default class Linkedlist{
             output += `[${i}]: ${node.data}`;
             node = node.next;
         }
-        output += ` ), count: ${this.#count}`;
+        output += ` ), count: ${this.#count}, removedHystory: ${this.#removedHistory}`;
 
         return output;
     }
