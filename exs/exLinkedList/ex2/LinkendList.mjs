@@ -26,6 +26,13 @@ export default class Linkedlist{
         return this.#count;
     }
 
+    reverse(){
+        let node = this.#head
+        for(let i = 0; i < this.#count; i++){
+           node = node.next
+        }
+    }
+    
     insert(index, value){
         const node = new Node(value);
 
@@ -51,7 +58,7 @@ export default class Linkedlist{
         else{
             let before = this.#head;
             for(let i = 1; i < index; i ++){
-                before = before.next
+                before = before.next;
             }
 
             let after = before.next;
@@ -64,11 +71,11 @@ export default class Linkedlist{
     }
 
     insertHead(value){
-        this.insert(0,value);
+        this.insert(0, value);
     }
 
     insertTail(value){
-        this.insert(this.#count ,value);
+        this.insert(this.#count, value);
     }
 
     // remove method
