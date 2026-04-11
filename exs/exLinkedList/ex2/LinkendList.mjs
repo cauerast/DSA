@@ -27,10 +27,19 @@ export default class Linkedlist{
     }
 
     reverse(){
+        if(this.isEmpty) return -1;
+
         let node = this.#head
-        for(let i = 0; i < this.#count; i++){
-           node = node.next
+        let prev = null;
+        this.#tail = this.#head;
+
+        while(node !== null){
+            let aux = node.next
+            node.next = prev;
+            prev = node;
+            node = aux;
         }
+        this.#head = prev;
     }
     
     insert(index, value){
