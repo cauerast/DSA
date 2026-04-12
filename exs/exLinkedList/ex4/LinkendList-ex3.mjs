@@ -56,6 +56,18 @@ export default class Linkedlist{
         }
         return `${n} appears ${acc} times at linkedList`;
     }
+
+    removeValue(n){
+        let node = this.#head;
+        for(let i = 0; i < this.#count; i++){
+            if(node.data === n){
+                this.remove(this.#count - 1);
+                node = node.next;
+            } else {
+                node = node.next;
+            }
+        }
+    }
     
     insert(index, value){
         const node = new Node(value);
