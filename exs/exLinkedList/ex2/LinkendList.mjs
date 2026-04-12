@@ -29,15 +29,16 @@ export default class Linkedlist{
     reverse(){
         if(this.isEmpty) return -1;
 
-        let node = this.#head
+        let node = this.#head; // start node at head
         let prev = null;
+
         this.#tail = this.#head;
 
-        while(node !== null){
-            let aux = node.next
-            node.next = prev;
-            prev = node;
-            node = aux;
+        while(node != null){
+            let aux = node.next; // start aux
+            node.next = prev; // node points to previous node, inverting the pointers
+            prev = node; // prev walks to next
+            node = aux; // node walks to next
         }
         this.#head = prev;
     }
