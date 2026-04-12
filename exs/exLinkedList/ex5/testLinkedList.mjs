@@ -1,4 +1,4 @@
-import Linkedlist from "./LinkendList-ex4.mjs";
+import Linkedlist from "./LinkendList-ex5.mjs";
 
 let list = new Linkedlist();
 
@@ -11,7 +11,4 @@ list.insert(5, 22);
 list.insert(6, 77);
 
 
-console.log(list.print());
-
-list.removeValue(77);
-console.log(list.print());
+console.log(list.toArray())
