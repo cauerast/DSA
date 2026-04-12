@@ -59,11 +59,27 @@ export default class Linkedlist{
 
     removeValue(n){
         let node = this.#head;
-        for(let i = 0; i < this.#count; i++){
+        let prev = null;
+        while(node !== null){
             if(node.data === n){
-                this.remove(this.#count - 1);
-                node = node.next;
-            } else {
+                if(node === this.#head){
+                    node = node.next;
+                    this.#head = node;
+                }
+                else if(node === this.#tail){
+                    prev.next = node.next;
+                    node = node.next; 
+                    this.#tail = prev;
+                }
+                else{
+                    prev.next = node.next
+                    node = node.next;
+                }
+                
+                this.#count--;
+            }
+            else{
+                prev = node;
                 node = node.next;
             }
         }

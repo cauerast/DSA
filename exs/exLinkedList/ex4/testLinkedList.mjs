@@ -8,7 +8,10 @@ list.insert(2, 88);
 list.insert(3, 99);
 list.insert(4, 77);
 list.insert(5, 22);
+list.insert(6, 77);
+
 
 console.log(list.print());
 
-console.log(list.countOccurrences(22));
+list.removeValue(77);
+console.log(list.print());
