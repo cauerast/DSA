@@ -1,4 +1,4 @@
-import Linkedlist from "./LinkendList.mjs";
+import Linkedlist from "./LinkendList-ex2.mjs";
 
 let list = new Linkedlist();
 

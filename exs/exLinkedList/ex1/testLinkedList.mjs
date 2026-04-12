@@ -1,4 +1,4 @@
-import Linkedlist from "./LinkendList.mjs";
+import Linkedlist from "./LinkendList-ex1.mjs";
 
 const list = new Linkedlist();
 

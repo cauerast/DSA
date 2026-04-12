@@ -42,6 +42,19 @@ export default class Linkedlist{
         }
         this.#head = prev;
     }
+
+    countOccurrences(n){
+        let node = this.#head;
+        let acc = 0;
+        while(node != null){
+            if(node.data === n){
+                acc++;
+            } else {
+                node = node.next;
+            }
+        }
+        return `${n} appears ${acc} times at linkedList`;
+    }
     
     insert(index, value){
         const node = new Node(value);

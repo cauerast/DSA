@@ -1,4 +1,4 @@
-import Linkedlist from "./LinkendList.mjs";
+import Linkedlist from "./LinkendList-ex3.mjs";
 
 let list = new Linkedlist();
 
@@ -11,5 +11,6 @@ list.insert(5, 22);
 
 console.log(list.print());
 
-list.reverse();
-console.log(list.print());
+list.countOccurrences(77);
+
+console.log(list.countOccurrences(99));
