@@ -45,3 +45,4 @@ function ex4(arr){
 
 const arr3 = [5,7,8,9,2,3];
 ex4(arr3);
+
