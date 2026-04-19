@@ -10,7 +10,7 @@ console.log("\n\n----------------\n\n");
 
 
 
-// O(log n) -> log time    -->   number of times
+// O(log n) -> log time   -->   number of times
 function ex2(n){
     let i = 1;
     while(i < n){
