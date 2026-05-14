@@ -24,4 +24,4 @@ function factorialIterative(n) {
     console.log("Total memory used by CPU: ", typeof totalMemoryMB === 'number' ? totalMemoryMB.toFixed(2) + 'MB': totalMemoryMB);
 }
 
-factorialIterative(5)
+factorialIterative(5);
