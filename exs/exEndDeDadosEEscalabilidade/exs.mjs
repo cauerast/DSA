@@ -78,4 +78,5 @@ function multiplicarRecomendacao(avaliacoes, pesos) {
 console.log("Seu resultado: ", multiplicarRecomendacao(avaliacoes, pesos));
 
 // --- DADOS PARA TESTE ---
-// Resultado esperado: [100, 80, 0, 40, 0]
+// Resultado esperado: [100, 80, 0, 40, 0], esse resultado esperado esta incorreto
+ // O resultado esperado seria -> [100, 80, 40, 0].
