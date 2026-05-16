@@ -58,21 +58,24 @@ const pesos = [10, 20, 30, 40, 50]; // Pesos para os filmes 0, 1, 2, 3 e 4
 function multiplicarRecomendacao(avaliacoes, pesos) {
     // 1. Crie o vetor de resultado com tamanho 4 (número de usuários) preenchido com zeros
     // Dica: Use new Array(x).fill(x)
-    let results = new Array().fill(0);
+    let results = new Array(4).fill(0);
 
     // 2. Percorra a matriz esparsa (lista de triplas) com um único laço
-    for(const {row, column, value} of avaliacoes){
-        console.log(`usuario: ${{row}}, filme: ${{column}}, value: ${{value}} `)
+    for(const { row, column, value } of avaliacoes){
+        console.log(`usuario: ${row}, filme: ${column}, value: ${value} `)
     }
 
     // 3. Aplique a lógica: Multiplique o 'valor' da nota pelo peso no 'vetorDenso' correspondente à 'coluna' e some no índice 'linha' do resultado.
     let i = 0;
-    for(const {row, column, value} of avaliacoes){
-        results[i] = value * avaliacoes[column];
+    for(const { row, column, value } of avaliacoes){
+        results[i] = value * pesos[column];
         i++;
     }
     // 4. Retorne o vetor de scores final
+    return results;
 }
+
+console.log("Seu resultado: ", multiplicarRecomendacao(avaliacoes, pesos));
+
 // --- DADOS PARA TESTE ---
 // Resultado esperado: [100, 80, 0, 40, 0]
-console.log("Seu resultado: ", multiplicarRecomendacao(avaliacoes, pesos));
