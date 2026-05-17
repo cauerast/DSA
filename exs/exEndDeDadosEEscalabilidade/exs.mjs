@@ -79,4 +79,4 @@ console.log("Seu resultado: ", multiplicarRecomendacao(avaliacoes, pesos));
 
 // --- DADOS PARA TESTE ---
 // Resultado esperado: [100, 80, 0, 40, 0], esse resultado esperado esta incorreto
- // O resultado esperado seria -> [100, 80, 40, 0].
+// O resultado esperado seria -> [100, 80, 40, 0]. pois foi pedido um array de 4 posicoes, mesmo tendo 5 filmes
