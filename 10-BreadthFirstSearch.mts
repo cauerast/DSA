@@ -1,15 +1,17 @@
 import Stack from './lib/Queue.mjs'
 
 interface Graph {
+    [key: string]: string[];
+}
+
+const graph: Graph = {
     A: ['B', 'C'],
     B: ['D', 'E'],
     C: ['F'],
     D: [],
     E: [],
-    F: []  
-}
-
-let graph:Graph;
+    F: []
+};
 
 // bfs ->
 
