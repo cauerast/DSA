@@ -1,4 +1,4 @@
-import Queue from './lib/Queue.mjs';
+import Stack from './lib/Stack.mjs';
 
 interface Graph {
     [key: string]: string[];
@@ -13,30 +13,30 @@ const graph: Graph = {
     F: []
 };
 
-function bfs(g: Graph, start: string): void {
+function dfs(g: Graph, start: string): void {
     const visited: Set<string> = new Set();
-    // Use typeof to reference the class type if Queue doesn't export a type natively
-    const queue = new Queue(); 
+    // Use typeof to reference the class type if Stack doesn't export a type natively
+    const stack = new Stack(); 
 
-    queue.enqueue(start);
+    stack.push(start);
 
     // 1. Added parentheses to call isEmpty() as a method
-    while (!queue.isEmpty) { 
-        const node: string = queue.dequeue();
+    while (!stack.isEmpty) { 
+        const node: string = stack.pop();
 
         if (!visited.has(node)) {
             console.log(node);
             visited.add(node);
 
-            // 2. Added loop to push neighboring nodes into the queue
+            // 2. Added loop to push neighboring nodes into the stack
             const neighbors = g[node] || [];
             for (const neighbor of neighbors) {
                 if (!visited.has(neighbor)) {
-                    queue.enqueue(neighbor);
+                    stack.push(neighbor);
                 }
             }
         }
     }
 }
 
-bfs(graph, 'A');
+dfs(graph, 'A');
