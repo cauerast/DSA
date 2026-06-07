@@ -9,7 +9,7 @@ const graph = {
     F: []
 }
 
-function dfs(g, start)  {
+function bfs(g, start)  {
     const visited = new Set();
     // Use typeof to reference the class type if queue doesn't export a type natively
     const queue = new Queue(); 
@@ -35,4 +35,4 @@ function dfs(g, start)  {
     }
 }
 
-dfs(graph, 'A');
+bfs(graph, 'A');
