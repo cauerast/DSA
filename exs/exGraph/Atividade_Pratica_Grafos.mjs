@@ -59,7 +59,7 @@ const grafoArvore = {
   C: ["A", "F"],
   D: ["B"],
   E: ["B"],
-  F: ["C"]
+  F: ["C"],
 };
 
 // Grafo Conexo com Ciclo
@@ -69,7 +69,7 @@ const grafoComCiclo = {
   C: ["A", "F"],
   D: ["B", "E"], // Conexão extra D-E que fecha um ciclo
   E: ["B", "D"],
-  F: ["C"]
+  F: ["C"],
 };
 
 // Grafo Desconexo (com nós isolados)
@@ -78,61 +78,86 @@ const grafoDesconexo = {
   B: ["A"],
   C: ["D"],
   D: ["C"],
-  E: [] // Nó totalmente isolado
+  E: [], // Nó totalmente isolado
 };
 
 // ==========================================
 // EXERCÍCIO 1: BFS COM DISTÂNCIAS E CAMINHOS
 // ==========================================
 function obterDistanciasEBFS(g, start) {
-    const visited = new Set();
-    const queue = new Queue(); 
-    
-    let distancias = {};
-    let caminhos = {};
+  const visited = new Set();
+  const queue = new Queue();
 
-    queue.enqueue(start);
-    visited.add(start);
-    distancias[start] = 0;
-    caminhos[start] = [start];
+  let distancias = {};
+  let caminhos = {};
 
-    while (!queue.isEmpty) { 
-        const node = queue.dequeue();
-        
-        const neighbors = g[node] || [];
-        for (const neighbor of neighbors) {
-            if (!visited.has(neighbor)) {
-                visited.add(neighbor);
-                queue.enqueue(neighbor);
+  queue.enqueue(start);
+  visited.add(start);
+  distancias[start] = 0;
+  caminhos[start] = [start];
 
-                // vizinho = pai + 1
-                distancias[neighbor] = distancias[node] + 1;
+  while (!queue.isEmpty) {
+    const node = queue.dequeue();
 
-                // caminho = caminho do pai + vizinho
-                caminhos[neighbor] = [...caminhos[node], neighbor];
-            }
-        }
+    const neighbors = g[node] || [];
+    for (const neighbor of neighbors) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        queue.enqueue(neighbor);
+
+        // vizinho = pai + 1
+        distancias[neighbor] = distancias[node] + 1;
+
+        // caminho = caminho do pai + vizinho
+        caminhos[neighbor] = [...caminhos[node], neighbor];
+      }
     }
+  }
 
-    return {
-        "distancias": distancias,
-        "caminhos": caminhos
-    };
+  return {
+    distancias: distancias,
+    caminhos: caminhos,
+  };
 }
-
 
 // ==========================================
 // EXERCÍCIO 2: DETECÇÃO DE CICLOS COM DFS
 // ==========================================
 function detectarCiclo(g, start) {
-    return 0;
+    const visited = new Set();
+    const stack = new Stack();
+
+    stack.push({nd: start, pai: null});
+
+    while (!stack.isEmpty) {
+        const crr = stack.pop();
+        const node = crr.nd
+        const pai = crr.pai
+
+        if (visited.has(node)) {
+            return true;
+        }
+
+        visited.add(node);
+
+        
+        const neighbors = g[node] || [];
+        for (let i = neighbors.length - 1; i >= 0; i--){
+            if(neighbors[i] === pai) continue;
+
+            if(visited.has(neighbors[i])) return true
+
+            stack.push({nd: neighbors[i], pai: node})
+        }
+    }
+    return false
 }
 
 // ==========================================
 // EXERCÍCIO 3: COMPONENTES CONEXOS
 // ==========================================
 function contarComponentesConexos(grafo) {
-    return 0;
+  return 0;
 }
 
 // ==========================================
@@ -140,7 +165,7 @@ function contarComponentesConexos(grafo) {
 // ==========================================
 
 console.log("--- TESTANDO EXERCÍCIO 1 (BFS) ---");
-console.log(obterDistanciasEBFS(grafoArvore, "A")); 
+console.log(obterDistanciasEBFS(grafoArvore, "A"));
 /* Saída esperada:
 {
   "distancias": { "A": 0, "B": 1, "C": 1, "D": 2, "E": 2, "F": 2 },
@@ -160,5 +185,11 @@ console.log("Grafo Árvore tem ciclo?", detectarCiclo(grafoArvore, "A")); // Sa�
 console.log("Grafo com Ciclo tem ciclo?", detectarCiclo(grafoComCiclo, "A")); // Saída esperada: true
 
 console.log("\n--- TESTANDO EXERCÍCIO 3 (Componentes Conexos) ---");
-console.log("Qtd Componentes grafoArvore:", contarComponentesConexos(grafoArvore)); // Saída esperada: 1
-console.log("Qtd Componentes grafoDesconexo:", contarComponentesConexos(grafoDesconexo)); // Saída esperada: 3
+console.log(
+  "Qtd Componentes grafoArvore:",
+  contarComponentesConexos(grafoArvore),
+); // Saída esperada: 1
+console.log(
+  "Qtd Componentes grafoDesconexo:",
+  contarComponentesConexos(grafoDesconexo),
+); // Saída esperada: 3
