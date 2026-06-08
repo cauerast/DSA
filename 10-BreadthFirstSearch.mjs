@@ -11,18 +11,16 @@ const graph = {
 
 function bfs(g, start)  {
     const visited = new Set();
-    // Use typeof to reference the class type if queue doesn't export a type natively
     const queue = new Queue(); 
 
     queue.enqueue(start);
 
-    // 1. Added parentheses to call isEmpty() as a method
     while (!queue.isEmpty) { 
         const node = queue.dequeue();
 
         if (!visited.has(node)) {
-            console.log(node);
-            visited.add(node);
+            console.log(node); // show
+            visited.add(node); // visit
 
             // 2. Added loop to enqueue neighboring nodes into the queue
             const neighbors = g[node] || [];
