@@ -158,7 +158,7 @@ function detectarCiclo(g, start) {
 // ==========================================
 function contarComponentesConexos(g) {
   const visited = new Set();
-  let contador = 0;
+  let ctt = 0;
 
   function explorarComponente(node) {
     const stack = new Stack();
@@ -180,12 +180,12 @@ function contarComponentesConexos(g) {
 
   for (const vertice in g) {
     if (!visited.has(vertice)) {
-      contador++;
+      ctt++;
       explorarComponente(vertice);
     }
   }
 
-  return contador;
+  return ctt;
 }
 
 // ==========================================
