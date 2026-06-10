@@ -156,8 +156,36 @@ function detectarCiclo(g, start) {
 // ==========================================
 // EXERCÍCIO 3: COMPONENTES CONEXOS
 // ==========================================
-function contarComponentesConexos(grafo) {
-  return 0;
+function contarComponentesConexos(g) {
+  const visited = new Set();
+  let contador = 0;
+
+  function explorarComponente(node) {
+    const stack = new Stack();
+    stack.push(node);
+    visited.add(node);
+
+    while (!stack.isEmpty) {
+      const crr = stack.pop();
+      const neighbors = g[crr] || [];
+
+      for (const neighbor of neighbors) {
+        if (!visited.has(neighbor)) {
+          visited.add(neighbor);
+          stack.push(neighbor);
+        }
+      }
+    }
+  }
+
+  for (const vertice in g) {
+    if (!visited.has(vertice)) {
+      contador++;
+      explorarComponente(vertice);
+    }
+  }
+
+  return contador;
 }
 
 // ==========================================
