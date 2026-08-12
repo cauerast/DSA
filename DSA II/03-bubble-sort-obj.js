@@ -23,22 +23,39 @@
   Final sorted result: [ 1, 2, 4, 5 ]
 */
 
-function bubbleSort(arr){
+
+import { objMotoristas } from '../data/motoristas-obj-desord.mjs';
+let pass = 0, comps = 0, changes = 0;
+
+function bubbleSortObj(arr, fnComp){
   let change;
 
   do {
+    pass++;
     change = false;
 
     for(let i = 0; i < arr.length - 1; i++){
-      if(arr[i] > arr[i+1]){
+      comps++;
+      if(fnComp(arr[i], arr[i+1])){
         [ arr[i], arr[i+1] ] = [ arr[i+1], arr[i] ];
         change = true;
+        changes++;
       }
     }
-  } while(change)
+  } while(change);
   
   return arr;
 }
 
-let nums = [77, 44, 33, 77, 66, 88, 99, 90, 23, 67, 21, 1, 8];
-console.log(bubbleSort(nums));
+console.log(
+  bubbleSortObj(
+    objMotoristas, // array
+    (a, b) => a.nome_motorista > b.nome_motorista) // obj1 > obj2
+); // return true or false
+
+// inline -> 
+// console.log(bubbleSortObj(objMotoristas, (a, b) => a.nome_motorista > b.nome_motorista));
+
+// --
+
+console.log({pass, comps, changes});
