@@ -15,6 +15,9 @@ function mergeSort(arr){
     if(leftArr[leftPos] < rightArr[rightPos]){
       resArr.push(leftArr[leftPos]);
       leftPos++;
+    } else {
+      resArr.push(rightArr[rightPos]);
+      rightPos++;
     }
   }
 }
