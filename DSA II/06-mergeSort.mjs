@@ -9,7 +9,9 @@ function mergeSort(arr){
   leftArr = mergeSort(leftArr);
   rightArr = mergeSort(rightArr);
 
-  let leftPos = 0; rightPos = 0; resArr = [];
+  let leftPos = 0;
+  let rightPos = 0;
+  let resArr = [];
 
   while(leftPos < leftArr.length && rightPos < rightArr.length){
     if(leftArr[leftPos] < rightArr[rightPos]){
@@ -20,6 +22,18 @@ function mergeSort(arr){
       rightPos++;
     }
   }
+
+  let over;
+
+  if(leftPos < rightPos){
+    over = leftArr.slice(leftPos);
+  } else {
+    over = rightArr.slice(rightPos)
+  }
+
+  return [...resArr, ...over]
 }
 
 let nums = [77, 44, 33, 77, 66, 88, 99, 90, 23, 67, 21, 1, 8];
+
+console.log(mergeSort(nums));
