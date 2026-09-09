@@ -1,43 +1,52 @@
-let pass = 0, comps = 0, changes = 0;
+let pass = 0,
+  comps = 0,
+  trocas = 0;
 
-function quickSort(arr, start = 0, end = arr.length - 1){
+function quickSort(vetor, fnComp, ini = 0, fim = vetor.length - 1) {
+  //só trabalhamos se a aregião do vetor tiver, pelo menos, 2 elementos
+  if (fim <= ini) return; //condição de saída
 
-  if(end <= start) return; // out condition
-  pass++
+  pass++;
+  const pivot = fim; //pivot
 
-  let pivot = end; // p = pivot
+  let div = ini - 1; //divisor ded regiões(inicialmente, antes do início do vetor)
 
-  let div = start - 1; // arr divisor
-
-  for(let i = start; i < end; i++){
-    comps++
-    if(arr[pivot] > arr[i]){
-      div++
-
-      if(div !== i){
-        [arr[i], arr[div]] = [arr[div], arr[i]]
-        changes++;
+  for (let i = ini; i < fim; i++) {
+    comps++;
+    if (fnComp(vetor[pivot], vetor[i])) {
+      div++;
+      if (div !== i) {
+        [vetor[i], vetor[div]] = [vetor[div], vetor[i]];
+        trocas++;
       }
     }
   }
 
   div++;
+  //colocamos o pivô em seu lugar definitivo
 
-  if(arr[div] > arr[pivot] && div !== pivot){
-    [arr[div], arr[pivot]] = [arr[pivot], arr[div]]
-    changes++
+  comps++;
+  if (fnComp(vetor[div], vetor[pivot]) && div !== pivot) {
+    [vetor[div], vetor[pivot]] = [vetor[pivot], vetor[div]];
+    trocas++;
   }
 
-  quickSort(arr, start, div - 1); // left side
-  quickSort(arr, div + 1, end); // right side
-
+  quickSort(vetor, fnComp, ini, div - 1);
+  quickSort(vetor, fnComp, div + 1, fim);
 }
 
+import { objMotoristas } from "./data/motoristas-obj-desord.mjs";
 
-import {nomes} from '../data/nomes-desord.mjs'
+quickSort(
+  objMotoristas,
+  (elem1, elem2) => {
+  if (elem1.razao_social !== elem2.razao_social) {
+    return elem1.razao_social > elem2.razao_social;
+  }
+  return elem1.nome_motorista > elem2.nome_motorista;
+}
+);
 
-quickSort(nomes)
+console.log(objMotoristas);
 
-console.log(nomes)
-console.log({pass, comps, changes})
-
+console.log({ pass, comps, trocas });
