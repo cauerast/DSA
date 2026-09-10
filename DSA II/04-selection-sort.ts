@@ -24,32 +24,28 @@
 // i = index
 
 // [5, 2, 6, 4, 1, 3]
-// s min  i
+//  s min i
+// [1, 2, 6, 4, 5, 3]
+//        s min    i
+// [1, 2, 3, 4, 5, 6]
+//              s (min, i)
 
-import { objMotoristas } from "../data/motoristas-obj-desord.mjs";
+function selectionSortTS(arr: number[]): number[] {
+  for(let s: number = 0; s < arr.length - 1; s++){
 
-let pass = 0, comps = 0, changes = 0;
-function selectionSortObj(arr, fnComp){
+    let min: number = s + 1;
+    for(let i: number = min + 1; i < arr.length; i++){
 
-  for(let s = 0; s < arr.length - 1; s++){
-    pass++;
-
-    let min = s + 1;
-    for(let i = min + 1; i < arr.length; i++){
-
-      if(fnComp(arr[min], arr[i])) min = i;
-      comps++;
+      if(arr[min] > arr[i]) min = i;
     }
 
-    if(fnComp(arr[s], arr[min])){
+    if(arr[s] > arr[min]){
       [ arr[s], arr[min] ] = [ arr[min], arr[s] ];
-      changes++;
     }
-    comps++;
   }
 
   return arr;
 }
 
-console.log(selectionSortObj(objMotoristas, (a, b) => a.nome_motorista > b.nome_motorista));
-console.log({pass, comps, changes});
+let numsTyS: number[] = [77, 44, 33, 77, 66, 88, 99, 90, 23, 67, 21, 1, 8];
+console.log(selectionSortTS(numsTyS));

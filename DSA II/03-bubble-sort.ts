@@ -23,8 +23,8 @@
   Final sorted result: [ 1, 2, 4, 5 ]
 */
 
-function bubbleSort(arr){
-  let change;
+function bubbleSortTS(arr: number[]): number[]{
+  let change: boolean;
 
   do {
     change = false;
@@ -40,5 +40,5 @@ function bubbleSort(arr){
   return arr;
 }
 
-let nums = [77, 44, 33, 77, 66, 88, 99, 90, 23, 67, 21, 1, 8];
-console.log(bubbleSort(nums));
+let numsTS: number[] = [77, 44, 33, 77, 66, 88, 99, 90, 23, 67, 21, 1, 8];
+console.log(bubbleSortTS(numsTS));

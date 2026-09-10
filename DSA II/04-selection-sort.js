@@ -19,25 +19,28 @@
 */
 
 
-// ps = selected position
-// pm = min position
+// s = selected position
+// min = min position
 // i = index
 
 // [5, 2, 6, 4, 1, 3]
-// ps pm  i
-
+//  s min i
+// [1, 2, 6, 4, 5, 3]
+//        s min    i
+// [1, 2, 3, 4, 5, 6]
+//              s (min, i)
 
 function selectionSort(arr){
-  for(let ps = 0; ps < arr.length - 1; ps++){
+  for(let s = 0; s < arr.length - 1; s++){
 
-    let pm = ps + 1;
-    for(let i = pm + 1; i < arr.length; i++){
+    let min = s + 1;
+    for(let i = min + 1; i < arr.length; i++){
 
-      if(arr[pm] > arr[i]) pm = i;
+      if(arr[min] > arr[i]) min = i;
     }
 
-    if(arr[ps] > arr[pm]){
-      [ arr[ps], arr[pm] ] = [ arr[pm], arr[ps] ];
+    if(arr[s] > arr[min]){
+      [ arr[s], arr[min] ] = [ arr[min], arr[s] ];
     }
   }
 

@@ -9,7 +9,7 @@ function binarySearch(array, value) {
   while (end >= init) {
     let mid = Math.floor((init + end) / 2);
 
-    if (value === array[mid]) return mid;
+    if (value === array[mid]) return mid; // first check middle
     else if (value > array[mid]) {
       init = mid + 1;
     } else {

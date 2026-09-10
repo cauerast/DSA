@@ -19,30 +19,30 @@
 */
 
 
-// ps = selected position
-// pm = min position
+// s = selected position
+// min = min position
 // i = index
 
 // [5, 2, 6, 4, 1, 3]
-// ps pm  i
+// s min  i
 
 import { nomes } from "../data/nomes-desord.mjs";
 
 function selectionSortObj(arr){
   let pass = 0, comps = 0, changes = 0;
 
-  for(let ps = 0; ps < arr.length - 1; ps++){
+  for(let s = 0; s < arr.length - 1; s++){
     pass++;
 
-    let pm = ps + 1;
+    let min = s + 1;
     for(let i = pm + 1; i < arr.length; i++){
 
-      if(arr[pm] > arr[i]) pm = i;
+      if(arr[min] > arr[i]) min = i;
       comps++;
     }
 
-    if(arr[ps] > arr[pm]){
-      [ arr[ps], arr[pm] ] = [ arr[pm], arr[ps] ];
+    if(arr[s] > arr[min]){
+      [ arr[s], arr[min] ] = [ arr[min], arr[s] ];
       changes++;
     }
     comps++;
