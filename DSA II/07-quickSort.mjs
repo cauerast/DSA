@@ -1,3 +1,6 @@
+// mid case: O(n log n)
+// best case: O(n log n)
+
 function quickSort(arr, start = 0, end = arr.length - 1){
   if(end <= start) return; // out condition
 

@@ -1,3 +1,6 @@
+// mid case: O(n log n)
+// best case: O(n log n)
+
 let pass = 0,
   comps = 0,
   trocas = 0;
