@@ -1,3 +1,6 @@
+// mid case: O(n)
+// best case: O(1)
+
 import { objNomes } from '../data/vetor-obj-nomes.mjs';
 
 function sequentialSearch(array, fnComp) {

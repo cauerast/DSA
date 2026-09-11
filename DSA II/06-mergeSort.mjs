@@ -1,3 +1,6 @@
+// mid case: O(n log n)
+// best case: O(n log n)
+
 function mergeSort(arr){
   if(arr.length < 2) return arr;
 

@@ -1,3 +1,6 @@
+// mid case: O(log n)
+// best case: O(1)
+
 import { nomes } from '../data/vetor-nomes.mjs';
 
 // search algorithm that needs a sorted array

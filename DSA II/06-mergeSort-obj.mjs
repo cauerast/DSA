@@ -1,3 +1,7 @@
+// mid case: O(n log n)
+// best case: O(n log n)
+
+
 let comps = 0,
   divisoes = 0,
   juncoes = 0;

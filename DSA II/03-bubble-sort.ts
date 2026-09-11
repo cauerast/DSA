@@ -1,5 +1,8 @@
-/*
-    Bubble sort - sorting by comparison 
+/* 
+  Bubble sort - sorting by comparison 
+
+  mid case: O(n²)
+  best case: O(n)
 
   Given the following unsorted list: [ 5, 2, 4, 1 ]
   

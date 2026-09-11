@@ -1,7 +1,11 @@
 /* 
    Selection sort - sorting by selection
+
+   mid case: O(n²)
+   best case: O(n²)
+
    Given the following unsorted list: [ 5, 2, 4, 1 ]
-   
+
    Step 1: Find the smallest number in the entire list and swap it with the first.
    [ 5, 2, 4, 1 ] -> The smallest number found is 1.
      ^        ^       Swap 5 and 1.

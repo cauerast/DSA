@@ -1,3 +1,6 @@
+// mid case: O(n)
+// best case: O(1)
+
 const fruits = ['laranja', 'maca', 'uva', 'pera', 'jabuticaba', 'limao'];
 const numbers = [1, 5, 7, 10, 2, 24, 15];
 

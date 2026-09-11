@@ -1,3 +1,6 @@
+// mid case: O(log n)
+// best case: O(1)
+
 import { objNomes } from '../data/vetor-obj-nomes.mjs';
 
 function compare(obj, value) {
