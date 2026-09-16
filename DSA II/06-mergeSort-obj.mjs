@@ -49,7 +49,7 @@ function mergeSort(vetor, fnComp) {
   return [...vetRes, ...sobra];
 }
 
-import { objMotoristas } from "./data/motoristas-obj-desord.mjs";
+import { objMotoristas } from "../data/motoristas-obj-desord.mjs";
 
 let objMotoristasOrd = mergeSort(
   objMotoristas,
