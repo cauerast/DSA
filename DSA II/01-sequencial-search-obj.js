@@ -10,7 +10,7 @@ function sequentialSearch(array, fnComp) {
   return -1;
 }
 
-function compName(name) {
+function compName(obj, name) {
   return (obj) => obj.first_name === name.toUpperCase();
 }
 
@@ -18,5 +18,5 @@ const searchName = 'ALEXANDRE';
 
 console.log(
   `index of ${searchName}`,
-  sequentialSearch(objNomes, compName(searchName))
+  sequentialSearch(objNomes, compName(objNomes, searchName))
 );
