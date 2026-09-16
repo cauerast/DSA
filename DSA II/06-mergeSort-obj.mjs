@@ -29,7 +29,7 @@ function mergeSort(vetor, fnComp) {
   while (posEsq < vetEsq.length && posDir < vetDir.length) {
     comps++;
 
-    if (fnComp(vetDir[posDir], vetEsq[posEsq])) {
+    if (fnComp(vetEsq[posEsq], vetDir[posDir])) {
       vetRes.push(vetEsq[posEsq]);
       posEsq++;
     } else {
@@ -53,7 +53,7 @@ import { objMotoristas } from "../data/motoristas-obj-desord.mjs";
 
 let objMotoristasOrd = mergeSort(
   objMotoristas,
-  (elem1, elem2) => elem1.nome_motorista > elem2.nome_motorista,
+  (elem1, elem2) => elem1.nome_motorista < elem2.nome_motorista,
 );
 
 console.log(objMotoristasOrd);
