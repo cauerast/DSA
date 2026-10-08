@@ -57,19 +57,45 @@ export default class BinarySearchTree {
     const inserted = new Node(value);
 
     // first case, empty tree
-    if(this.#root === null) this.#root = inserted
-
+    if (this.#root === null) this.#root = inserted;
     // second case, traveling tree recursively
-    else this.#insertNode(inserted, this.#root)
-
+    else this.#insertNode(inserted, this.#root);
   }
 
-  #insertNode(){
-    return 
+  #insertNode(inserted, root) {
+    if (inserted.data < root.data) {
+      // first case, inserted is least than root
+      if (root.left === null) {
+        root.left = inserted;
+      } else {
+        this.#insertNode(inserted, root.left);
+      }
+    } else if (inserted.data > root.data) {
+      // second case, inserted is grather than root
+      if (root.right === null) {
+        root.right = inserted;
+      } else {
+        this.#insertNode(inserted, root.right);
+      }
+    } else {
+      // tird case, inserted is equals root, we call the left node.
+      this.#insertNode(inserted, root.left);
+    }
   }
-  // #insertNode(inserted, node){
-  //   if(inserted < node) return node.left = inserted
-  //   else if (inserted > node) return node.right = inserted
-  //   else return;
-  // }
+
+  inOrderTraversal(fnCallback, root = this.#root) {
+    if (root != null) {
+      this.inOrderTraversal(fnCallback, root.left);
+      fnCallback(root.data);
+      this.inOrderTraversal(fnCallback, root.right);
+    }
+  }
+
+  preOrderTraversal(fnCallback, root = this.#root) {
+    if (root != null) {
+      fnCallback(root.data);
+      this.preOrderTraversal(fnCallback, root.left);
+      this.preOrderTraversal(fnCallback, root.right);
+    }
+  }
 }
