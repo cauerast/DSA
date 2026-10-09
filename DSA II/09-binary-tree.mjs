@@ -78,8 +78,8 @@ export default class BinarySearchTree {
         this.#insertNode(inserted, root.right);
       }
     } else {
-      // tird case, inserted is equals root, we call the left node.
-      this.#insertNode(inserted, root.left);
+      // tird case, inserted is equals root, just return.
+      return;
     }
   }
 
@@ -96,6 +96,74 @@ export default class BinarySearchTree {
       fnCallback(root.data);
       this.preOrderTraversal(fnCallback, root.left);
       this.preOrderTraversal(fnCallback, root.right);
+    }
+  }
+
+  postOrderTraversal(fnCallback, root = this.#root) {
+    if (root != null) {
+      this.postOrderTraversal(fnCallback, root.left);
+      this.postOrderTraversal(fnCallback, root.right);
+      this.fnCallback(root.data);
+    }
+  }
+
+  // private method that resturns least value
+  #minNode(root){
+    while(root !== null && root.left !== null) {
+      root = root.left;
+    }
+
+    return root;
+  }
+
+  // private method that resturns grather value
+  #maxNode(root){
+    while(root !== null && root.right !== null) {
+      root = root.right;
+    }
+
+    return root;
+  }
+
+  // public method to remove
+  remove(value) {
+    this.#root = this.#removeNode(this.#root, value);
+  }
+
+  #removeNode(root, value) {
+    // first case: empty tree
+    if (root === null) return null;
+
+    // second case: value is least than root
+    if(value < root.data) {
+      root.left = this.#removeNode(root.left, value);
+      return root;
+    }
+
+    // tird case: value is grather than root
+    if(value > root.data) {
+      root.right = this.#removeNode(root.right, value);
+      return root;
+    }
+
+    //fourth case: valus is equals root
+
+    // 0 degree node
+    if (root.left === null && root.right === null) {
+      root = null;
+      return root;
+    }
+
+    // 1 degree node at left side
+    if(root.left !== null && root.right === null){
+      root = root.left;
+      return root;
+    }
+
+    // 1 degree node at right side
+    if(root.right !== null && root.left === null){
+      root = root.right;
+      return root;
     }
   }
 }
