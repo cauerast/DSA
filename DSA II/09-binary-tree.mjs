@@ -56,29 +56,30 @@ export default class BinarySearchTree {
   insert(value) {
     const inserted = new Node(value);
 
-    // first case, empty tree
+    // 1st case, empty tree
     if (this.#root === null) this.#root = inserted;
-    // second case, traveling tree recursively
+
+    // 2ns case, traveling tree recursively
     else this.#insertNode(inserted, this.#root);
   }
 
   #insertNode(inserted, root) {
     if (inserted.data < root.data) {
-      // first case, inserted is least than root
+      // 1st case, inserted is least than root
       if (root.left === null) {
         root.left = inserted;
       } else {
         this.#insertNode(inserted, root.left);
       }
     } else if (inserted.data > root.data) {
-      // second case, inserted is grather than root
+      // 2nd case, inserted is grather than root
       if (root.right === null) {
         root.right = inserted;
       } else {
         this.#insertNode(inserted, root.right);
       }
     } else {
-      // tird case, inserted is equals root, just return.
+      // 3rd case, inserted is equals root, just return.
       return;
     }
   }
@@ -131,22 +132,22 @@ export default class BinarySearchTree {
   }
 
   #removeNode(root, value) {
-    // first case: empty tree
+    // 1st case: empty tree
     if (root === null) return null;
 
-    // second case: value is least than root
+    // 2nd case: value is least than root
     if(value < root.data) {
       root.left = this.#removeNode(root.left, value);
       return root;
     }
 
-    // tird case: value is grather than root
+    // 3rd case: value is grather than root
     if(value > root.data) {
       root.right = this.#removeNode(root.right, value);
       return root;
     }
 
-    //fourth case: valus is equals root
+    /// 4th case: valus is equals root
 
     // 0 degree node
     if (root.left === null && root.right === null) {
@@ -165,5 +166,36 @@ export default class BinarySearchTree {
       root = root.right;
       return root;
     }
+
+    /// 4.1th case 
+    // right subtree least value 
+    const newRoot = this.#minNode(root.right);
+    root.data = newRoot.data;
+    root.right = this.#removeNode(root.right, newRoot.data);
+    return root;
+  }
+
+  // Public method that search if a value exists inside the tree
+  // returns true or false
+
+  search(value){
+    const node = this.#searchNode(this.#root, value);
+    return node !== null;
+  }
+
+  // Search (Private method)
+  #searchNode(root, value){
+
+    // 1st case - empty tree
+    if(root === null) return null;
+
+    // 2nd case - value is least than root
+    if(value < root.data) return this.#searchNode(root.left, value);
+
+    // 3rd case - value is grather than root
+    if(value > root.data) return this.#searchNode(root.right, value);
+
+    // 4th case - value is equals root
+    return root;
   }
 }
