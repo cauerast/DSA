@@ -104,7 +104,7 @@ export default class BinarySearchTree {
     if (root != null) {
       this.postOrderTraversal(fnCallback, root.left);
       this.postOrderTraversal(fnCallback, root.right);
-      this.fnCallback(root.data);
+      fnCallback(root.data);
     }
   }
 
