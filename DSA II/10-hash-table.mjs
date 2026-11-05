@@ -1,3 +1,48 @@
+// ============================================================================
+// HASH TABLE (TABELA HASH)
+// 
+//      [ Key ] ---> { Hash Function } ---> [ Index ] ---> [ Array/Bucket ]
+//    "username"          h(x)                idx 3         [3] -> (Key, Value)
+// 
+// --- TERMINOLOGY & GLOSSARY ---
+// * Hash Table: A data structure that maps keys to values using a hash function.
+// * Hash Function: A algorithm that converts a key into a numeric array index.
+// * Key: The unique identifier used to look up a value (e.g., a text string).
+// * Value: The actual data stored and associated with a specific key.
+// * Bucket/Slot: The specific location in the underlying array where data is kept.
+// * Collision: When two different keys generate the exact same index.
+// * Load Factor: The ratio of stored items to total capacity (Size / Capacity).
+// * Rehashing: Resizing the table and redistributing items when it gets too full.
+// 
+// --- COLLISION RESOLUTION METHODS ---
+// * Chaining (Separate) -> Each bucket holds a Linked List of colliding items.
+// * Open Addressing     -> Finds another empty slot inside the array itself.
+//   - Linear Probing    -> Checks the next available slot sequentially (idx + 1).
+//   - Quadratic Probing -> Checks slots using a quadratic equation (idx + i²).
+//   - Double Hashing    -> Uses a second hash function to calculate the step size.
+// 
+// EXTENDED VISUAL EXAMPLE (Separate Chaining Model)
+// 
+//   [Index]    [Buckets / Array Slots]
+//     [0] ---> Null
+//     [1] ---> [ "Apple" : $1.99 ] ---> [ "Grape" : $2.50 ] ---> Null  (Collision!)
+//     [2] ---> Null
+//     [3] ---> [ "Banana" : $0.99 ] ---> Null
+//     [4] ---> [ "Orange" : $1.49 ] ---> Null
+//     [5] ---> Null
+// 
+// --- METRICS & ROLES FOR THIS SPECIFIC TABLE ---
+// * Total Capacity = 6 (Array size from 0 to 5)
+// * Current Size = 4 (Total elements inserted)
+// * Load Factor = 4 / 6 ≈ 0.66 (66% full)
+// * Collisions = 1 (At Index)
+// 
+// --- TIME COMPLEXITY (BIG O) ---
+// * Insertion (Put) -> Average: O(1) | Worst Case: O(n) (Due to collisions)
+// * Deletion (Delete) -> Average: O(1) | Worst Case: O(n)
+// * Search (Get)      -> Average: O(1) | Worst Case: O(n)
+// ============================================================================
+
 class HashTable {
   constructor(len = 11) {
     this.length = len; // Tamanho total do array principal
