@@ -107,7 +107,7 @@ export default class BinarySearchTree {
     }
   }
 
-  // private method that resturns least value
+  // private method that resturns min value
   #minNode(root) {
     while (root !== null && root.left !== null) {
       root = root.left;
@@ -116,7 +116,7 @@ export default class BinarySearchTree {
     return root;
   }
 
-  // private method that resturns grather value
+  // private method that resturns max value
   #maxNode(root) {
     while (root !== null && root.right !== null) {
       root = root.right;
@@ -146,7 +146,7 @@ export default class BinarySearchTree {
       return root;
     }
 
-    /// 4th case: valus is equals root
+    /// 4th case: value is equals root
 
     // 0 degree node
     if (root.left === null && root.right === null) {
