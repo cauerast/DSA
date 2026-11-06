@@ -58,7 +58,6 @@ export default class BinarySearchTree {
 
     // 1st case, empty tree
     if (this.#root === null) this.#root = inserted;
-
     // 2ns case, traveling tree recursively
     else this.#insertNode(inserted, this.#root);
   }
@@ -109,8 +108,8 @@ export default class BinarySearchTree {
   }
 
   // private method that resturns least value
-  #minNode(root){
-    while(root !== null && root.left !== null) {
+  #minNode(root) {
+    while (root !== null && root.left !== null) {
       root = root.left;
     }
 
@@ -118,8 +117,8 @@ export default class BinarySearchTree {
   }
 
   // private method that resturns grather value
-  #maxNode(root){
-    while(root !== null && root.right !== null) {
+  #maxNode(root) {
+    while (root !== null && root.right !== null) {
       root = root.right;
     }
 
@@ -136,13 +135,13 @@ export default class BinarySearchTree {
     if (root === null) return null;
 
     // 2nd case: value is least than root
-    if(value < root.data) {
+    if (value < root.data) {
       root.left = this.#removeNode(root.left, value);
       return root;
     }
 
     // 3rd case: value is grather than root
-    if(value > root.data) {
+    if (value > root.data) {
       root.right = this.#removeNode(root.right, value);
       return root;
     }
@@ -156,19 +155,19 @@ export default class BinarySearchTree {
     }
 
     // 1 degree node at left side
-    if(root.left !== null && root.right === null){
+    if (root.left !== null && root.right === null) {
       root = root.left;
       return root;
     }
 
     // 1 degree node at right side
-    if(root.right !== null && root.left === null){
+    if (root.right !== null && root.left === null) {
       root = root.right;
       return root;
     }
 
-    /// 4.1th case 
-    // right subtree least value 
+    /// 4.1th case
+    // right subtree least value
     const newRoot = this.#minNode(root.right);
     root.data = newRoot.data;
     root.right = this.#removeNode(root.right, newRoot.data);
@@ -178,22 +177,21 @@ export default class BinarySearchTree {
   // Public method that search if a value exists inside the tree
   // returns true or false
 
-  search(value){
+  search(value) {
     const node = this.#searchNode(this.#root, value);
     return node !== null;
   }
 
   // Search (Private method)
-  #searchNode(root, value){
-
+  #searchNode(root, value) {
     // 1st case - empty tree
-    if(root === null) return null;
+    if (root === null) return null;
 
     // 2nd case - value is least than root
-    if(value < root.data) return this.#searchNode(root.left, value);
+    if (value < root.data) return this.#searchNode(root.left, value);
 
     // 3rd case - value is grather than root
-    if(value > root.data) return this.#searchNode(root.right, value);
+    if (value > root.data) return this.#searchNode(root.right, value);
 
     // 4th case - value is equals root
     return root;
