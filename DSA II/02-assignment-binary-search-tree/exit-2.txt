@@ -1,0 +1,97 @@
+
+==================================================
+ 1. STUDENT REGISTRATION AND INSERTION 
+
+
+
+Inserted: 2026050 - Ana Beatriz Souza
+Inserted: 2026020 - João Silva
+Inserted: 2026080 - Mariana Lopes
+Inserted: 2026010 - Pedro Henrique Alves
+Inserted: 2026030 - João Silva
+Inserted: 2026070 - Camila Ferreira
+Inserted: 2026090 - Rafael Costa
+Inserted: 2026025 - Luiza Martins
+Inserted: 2026075 - Bruno Carvalho
+Inserted: 2026095 - Fernanda Ribeiro
+
+Attempting to register duplicate RA (2026030 - Carlos Mendes)...
+RA already exists
+
+==================================================
+ 2. IN-ORDER LISTING AND TREE METRICS 
+
+
+
+Registered students (Ascending order of RA):
+  RA: 2026010 | Name: Pedro Henrique Alves    | Average: 6.5
+  RA: 2026020 | Name: João Silva              | Average: 7.0
+  RA: 2026025 | Name: Luiza Martins           | Average: 9.5
+  RA: 2026030 | Name: João Silva              | Average: 8.0
+  RA: 2026050 | Name: Ana Beatriz Souza       | Average: 8.5
+  RA: 2026070 | Name: Camila Ferreira         | Average: 7.5
+  RA: 2026075 | Name: Bruno Carvalho          | Average: 6.0
+  RA: 2026080 | Name: Mariana Lopes           | Average: 9.0
+  RA: 2026090 | Name: Rafael Costa            | Average: 5.5
+  RA: 2026095 | Name: Fernanda Ribeiro        | Average: 8.0
+
+Simplified list for validation:
+2026010, 2026020, 2026025, 2026030, 2026050, 2026070, 2026075, 2026080, 2026090, 2026095
+
+Calculated Metrics:
+  count = 10
+  height = 3
+  folhas = 4
+  média = 7.55
+
+==================================================
+ 3. SEARCH TESTS 
+
+
+
+Searching for RA 2026075...
+  Found -> Name: Bruno Carvalho, Average: 6
+Searching for RA 2026099...
+RA not found
+
+==================================================
+ 4. REMOVAL FLOW AND CASE TESTS 
+
+
+
+Removing RA 2026025 (Leaf Node)...
+In-order after insertions:
+  2026010, 2026020, 2026030, 2026050, 2026070, 2026075, 2026080, 2026090, 2026095
+
+Removing RA 2026090 (Degree 1 Node)...
+In-order after insertions:
+  2026010, 2026020, 2026030, 2026050, 2026070, 2026075, 2026080, 2026095
+
+Removing RA 2026050 (Degree 2 Node / Root)...
+In-order after insertions:
+  2026010, 2026020, 2026030, 2026070, 2026075, 2026080, 2026095
+
+==================================================
+ 5. FINAL TREE STRUCTURE 
+
+
+
+Final tree pre-order:
+  2026070, 2026020, 2026010, 2026030, 2026080, 2026075, 2026095
+
+Final Metrics:
+  count = 7
+  height = 2
+
+==================================================
+SIDEWAYS TREE PRINT 
+
+
+
+        2026095
+    2026080
+        2026075
+2026070
+        2026030
+    2026020
+        2026010
