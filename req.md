@@ -1,5 +1,5 @@
 https://xandygomes.github.io/ed/
- - prof: Alexandre Gomes
+prof: Alexandre Gomes
 
 https://github.com/XandyGomes/E.D.UniFacef.2026.2
 
