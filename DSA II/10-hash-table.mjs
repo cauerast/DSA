@@ -45,26 +45,26 @@
 
 class HashTable {
   constructor(len = 11) {
-    this.length = len; // Tamanho total do array principal
-    this.table = Array.from({ length: len }, () => []); // Inicializa os buckets vazios
-    this.qtd = 0; // Contador de elementos inseridos
+    this.length = len; // Total size of the main array
+    this.table = Array.from({ length: len }, () => []); // Initialize empty buckets
+    this.qtd = 0; // Counter for inserted elements
   }
 
-  // Método privado: Transforma a string em um índice numérico válido
+  // Private method: Converts a string into a valid numeric index
   #hash(key) {
     let h = 0;
     for (let i = 0; i < key.length; i++) {
-      // Multiplicação por 31 ajuda a distribuir melhor os hashes
+      // Multiplying by 31 helps distribute hashes better
       h = (h * 31 + key.charCodeAt(i)) % this.length;
     }
     return h;
   }
 
-  // Insere ou atualiza um par chave-valor
+  // Inserts or updates a key-value pair
   set(key, value) {
     const bucket = this.table[this.#hash(key)];
 
-    // 1º caso: A chave já existe, então atualiza o valor
+    // Case 1: Key already exists, so update its value
     for (const pair of bucket) {
       if (pair[0] === key) {
         pair[1] = value;
@@ -72,48 +72,48 @@ class HashTable {
       }
     }
 
-    // 2º caso: A chave é nova, adiciona ao fim do bucket
+    // Case 2: Key is new, append to the end of the bucket
     bucket.push([key, value]);
     this.qtd++;
 
-    // Controla a densidade da tabela para evitar lentidão
-    if (this.qtd / this.length > 0.75) {
+    // Control table load factor to avoid slowdown
+    if ((this.qtd / this.length) > 0.75) {
       this.#rehash();
     }
   }
 
-  // Busca o valor associado a uma chave
+  // Retrieves the value associated with a key
   get(key) {
     const bucket = this.table[this.#hash(key)];
 
-    // Percorre o bucket específico buscando a chave exata
+    // Traverse the specific bucket looking for the exact key
     for (const [k, v] of bucket) {
       if (k === key) {
-        return v; // Retorna o valor se encontrado
+        return v; // Return value if found
       }
     }
-    return undefined; // Retorna undefined caso não exista
+    return undefined; // Return undefined if not found
   }
 
-  // Remove um elemento da tabela
+  // Removes an element from the table
   delete(key) {
     const bucket = this.table[this.#hash(key)];
 
-    // Busca o índice do par dentro do sub-array (bucket)
+    // Find the index of the pair inside the sub-array (bucket)
     const i = bucket.findIndex(([k]) => k === key);
 
-    // 1º caso: Chave não encontrada
+    // Case 1: Key not found
     if (i === -1) return false;
 
-    // 2º caso: Chave encontrada, remove do bucket usando splice
+    // Case 2: Key found, remove from bucket using splice
     bucket.splice(i, 1);
     this.qtd--;
     return true;
   }
 
-  // Método privado para redimensionar a tabela (você está desenvolvendo)
+  // Private method to resize the table
   #rehash() {
-    const antiga = this.table;
+    const old = this.table;
     this.length = this.length * 2 + 1;
     this.table = Array.from({ length: this.length }, () => []);
     this.qtd = 0;
@@ -158,13 +158,19 @@ t.print();
 
 scene(6, 'set("eva") 2nd on bucket');
 console.log("eva's value ->", t.get('eva'));
+t.print();
+
 
 scene(7, 'set("zeca") empty bucket; get("mel") full bucket');
 console.log("zeca's value ->", t.get('zeca'));
 console.log("mel's value ->", t.get('mel'));
+t.print();
+
 
 scene(8, 'get("ana") lowercase');
 console.log("ana's value ->", t.get('ana'));
+t.print();
+
 
 scene(9, 'delete("ana") 1st on 5th bucket');
 console.log('ana deleted? ->', t.delete('ana'));
@@ -188,8 +194,7 @@ t.set('bia', 7);
 t.set('caio', 5);
 t.set('davi', 9);
 console.log('before: ', t.qtd, 'perc: ', (t.qtd / t.length).toFixed(2));
-
 t.set('luca', 6);
-
+t.print();
 
 export default HashTable;
